@@ -1,4 +1,5 @@
 
+
 public class Color {
 	// Reset
     public static final String RESET = "\033[0m";  // Text Reset
@@ -94,4 +95,24 @@ public class Color {
         }
 		
 	}
+
+    public static void Rainbow(String input, Boolean background, Boolean blink) {
+        int counter = 0;
+        if (blink) {
+            while (counter < 100) {
+                counter++;
+                System.out.println(Color.coloringBook(input, background));
+                // Sleep thread
+                try {
+                    Thread.sleep(100);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                System.out.print("\033[H\033[2J");
+                System.out.flush();
+            }
+        } else {
+            System.out.println(Color.coloringBook(input, background));
+        }
+    }
 }
